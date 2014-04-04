@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Parkit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+    <script type="text/javascript">
+		//window.alert("hello");
+		
+		var storageNotification = "Web Storage機能をチェック";
+		if (typeof localStorage == 'undefined') {
+			storageNotification = "Web Storage機能がありません";
+		} else {
+			storageNotification = "Web Storage機能が使用可能です";
+		}
+		//document.getElementById('notification').innerHTML = storageNotification;
+		
+		var storage = localStorage;
+		sayHello();
+		
+		// logParkページがDOMに追加されてからの処理
+		$(document).delegate("#logPark", "pagecreate", function() {
+			document.getElementById('notification').innerHTML = storageNotification;
+		});
+		
+		function sayHello() {
+			window.alert(storageNotification);
+		}
+</script>
+</head>
+
+<body>
+    <div id="home" data-role="page">
+        <header data-role="header">
+            <h1>PARKIT</h1>
+        </header>
+        <div data-role="content">
+            <p>コンテント1</p>
+            <a href="#logPark" data-role="button">Log</a>
+            <a href="#checkPark" data-role="button">Check</a>
+        </div>
+        <footer data-role="footer">
+            <h1>ksk studio</h1>
+        </footer>
+    </div>
+
+    <div id="logPark" data-role="page">
+        <header data-role="header">
+            <h1>Log your park</h1>
+        </header>
+        <div data-role="content">
+            <p>Record your parking information</p>
+            <p id="notification">notification</p>
+            <div data-role="fieldcontain">
+              <label for="textinput">Lot No.</label>
+              <input type="text" name="textinput" id="textinput" value=""  />
+            </div>
+            <div data-role="controlgroup" data-type="horizontal">
+              <button data-icon="arrow-r">ボタン</button>
+              <button data-icon="arrow-r">ボタン</button>
+            </div>
+        </div>
+        <footer data-role="footer">
+            <h1>ksk studio</h1>
+        </footer>
+    </div>
+        
+    <div id="checkPark" data-role="page">
+        <header data-role="header">
+            <h1>Check your park</h1>
+        </header>
+        <div data-role="content">
+            <p>Check your parking information</p>
+            <a href="#home" data-role="button">&lt; Home</a>
+        </div>
+        <footer data-role="footer">
+            <h1>ksk studio</h1>
+        </footer>
+    </div>
+        
+</body>
+</html>
